@@ -7,7 +7,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="relative w-full h-screen overflow-hidden">
-      <div className="flex flex-col items-center justify-center absolute top-0 z-20 w-full">
+      <div className="flex flex-col items-center justify-center h-screen bg-red-200 absolute top-0 z-20 w-full">
         <div className="w-1/2">
           <LottieWrapper animationData={welcome} loop />
         </div>
