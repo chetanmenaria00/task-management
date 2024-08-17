@@ -102,15 +102,15 @@ export default function Page() {
   return (
     <>
       {error && <Notification message={errorMessage} type={errorType} />}
-      <div className="w-full h-[100vh] flex items-center justify-center">
-        <div className="flex w-full h-full justify-center items-center">
-          <div className="flex w-full h-full justify-center items-center">
+      <div className="w-full lg:h-[100vh] flex items-center justify-center">
+        <div className="flex w-full h-full justify-center items-center flex-col lg:flex-row">
+          <div className="flex w-1/2 lg:w-full h-full justify-center items-center">
             <LottieWrapper animationData={login} loop autoPlay />
           </div>
           <div className="flex flex-col gap-6 w-full h-full justify-center items-center bg-[rgb(74,108,209)] px-5 rounded-s-full">
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="flex flex-col items-center justify-center gap-6 w-full border-[2px] border-[rgb(13,21,29)] py-32 rounded-s-full border-r-0"
+              className="px-2 lg:px-0 flex flex-col items-center justify-center gap-6 w-full border-[2px] border-[rgb(13,21,29)] py-32 rounded-s-full border-r-0"
             >
               <div className="mt-3 flex flex-col w-full items-center gap-2">
                 <input
@@ -140,7 +140,7 @@ export default function Page() {
               </button>
             </form>
             <Link href={"/auth/register"}>
-              <p className="text-white bg-[rgb(40,60,70)] px-12 rounded-xl py-4 text-xl">
+              <p className="text-white bg-[rgb(40,60,70)] px-12 rounded-xl py-4 text-xl mb-4">
                 SignUp
               </p>
             </Link>
