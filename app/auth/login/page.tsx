@@ -16,7 +16,6 @@ type Inputs = {
 
 export default function Page() {
   const [error, setError] = useState(false);
-  const [signUp, setSignUp] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorType, setErrorType] = useState<"error" | "success" | "info">(
     "error"
@@ -32,7 +31,7 @@ export default function Page() {
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "http://localhost:8080/api/users/login",
+      url: `${process.env.NEXT_PUBLIC_BE_API}users/login`,
       headers: {
         "Content-Type": "application/json",
       },
@@ -67,7 +66,6 @@ export default function Page() {
           setTimeout(() => {
             setError(false);
           }, 5000);
-          setSignUp(true);
         } else {
           console.log("data", data);
           console.log("data.message", data.message);
@@ -107,7 +105,7 @@ export default function Page() {
       <div className="w-full h-[100vh] flex items-center justify-center">
         <div className="flex w-full h-full justify-center items-center">
           <div className="flex w-full h-full justify-center items-center">
-            <LottieWrapper  animationData={login} loop autoPlay  />
+            <LottieWrapper animationData={login} loop autoPlay />
           </div>
           <div className="flex flex-col gap-6 w-full h-full justify-center items-center bg-[rgb(74,108,209)] px-5 rounded-s-full">
             <form
@@ -141,13 +139,11 @@ export default function Page() {
                 Submit
               </button>
             </form>
-            {signUp && (
-              <Link href={"/auth/register"}>
-                <p className="text-white bg-[rgb(40,60,70)] px-12 rounded-xl py-4 text-xl">
-                  Try using SignUp!
-                </p>
-              </Link>
-            )}
+            <Link href={"/auth/register"}>
+              <p className="text-white bg-[rgb(40,60,70)] px-12 rounded-xl py-4 text-xl">
+                SignUp
+              </p>
+            </Link>
           </div>
         </div>
       </div>

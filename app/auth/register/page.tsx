@@ -16,7 +16,6 @@ type Inputs = {
 
 export default function Page() {
   const [error, setError] = useState(false);
-  const [logIn, setLogIn] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [errorType, setErrorType] = useState<"error" | "success" | "info">(
     "error"
@@ -37,7 +36,7 @@ export default function Page() {
     let config = {
       method: "post",
       maxBodyLength: Infinity,
-      url: "http://localhost:8080/api/users/register",
+      url: `${process.env.NEXT_PUBLIC_BE_API}users/register`,
       headers: {
         "Content-Type": "application/json",
       },
@@ -72,7 +71,6 @@ export default function Page() {
           setTimeout(() => {
             setError(false);
           }, 5000);
-          setLogIn(true);
         } else {
           console.log("data", data);
           console.log("data.message", data.message);
@@ -116,7 +114,7 @@ export default function Page() {
               <LottieWrapper animationData={signup} loop autoPlay />
             </div>
           </div>
-          <div className="flex flex-col gap-6 w-full h-full justify-center items-center bg-[rgb(255,112,0)] opacity-90 px-5 rounded-s-full">
+          <div className="flex flex-col gap-6 w-full h-full justify-center items-center bg-[rgb(245,143,65)] px-5 rounded-s-full">
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col items-center justify-center gap-6 w-full border-[2px] border-[rgb(13,21,29)] py-32 rounded-s-full border-r-0"
@@ -158,13 +156,11 @@ export default function Page() {
                 Submit
               </button>
             </form>
-            {logIn && (
-              <Link href={"/auth/login"}>
-                <p className="text-white bg-[rgb(40,60,70)] px-12 rounded-xl py-4">
-                  Try using LogIn!
-                </p>
-              </Link>
-            )}
+            <Link href={"/auth/login"}>
+              <p className="text-white bg-[rgb(40,60,70)] px-12 rounded-xl py-4">
+                LogIn
+              </p>
+            </Link>
           </div>
         </div>
       </div>

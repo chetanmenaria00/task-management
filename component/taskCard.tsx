@@ -50,10 +50,6 @@ const TaskCard: React.FC<CardProps> = ({
 
   return (
     <div className="relative bg-green-200 shadow-lg rounded-lg overflow-hidden border border-gray-200 flex flex-col">
-      {isPending && <Notification message={"Deleting Task..."} type={"info"} />}
-      {showNotification && (
-        <Notification message={"Deleted Task!"} type={"success"} />
-      )}
       <div className="absolute right-2 top-2">
         <button onClick={() => handleDelete(id)}>
           <Image src={deleteIcon} alt="delete icon" />
